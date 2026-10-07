@@ -3,20 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bag 'Em All: Blinkit Pokémon bag tracker</title>
+    <title>
+      Blinkit Pokémon Bags Tracker: Checklist of All 30 | Bag 'Em All
+    </title>
     <meta
       name="description"
-      content="Tick off the 30 Pokémon printed on Blinkit bags as you find them. A fan-made checklist that saves in your browser."
+      content="Free tracker for the Blinkit Pokémon bags. See the list of all 30 Pokémon printed on the bags, tick off the ones you've found and share your collection."
     />
     <meta
       property="og:title"
-      content="Bag 'Em All: Blinkit Pokémon bag tracker"
+      content="Blinkit Pokémon Bags Tracker: Checklist of All 30"
     />
     <meta
       property="og:description"
-      content="30 Pokémon are present on Blinkit bags. Tick off the ones you've found."
+      content="See all 30 Pokémon on the Blinkit bags, tick off the ones you've found and share your collection. Free, no login."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bag 'Em All" />
+    <meta name="twitter:card" content="summary" />
+    <!-- Google Search Console: if you verify with the "HTML tag" method, paste the meta tag it gives you on the next line -->
+
     <meta name="theme-color" content="#2437C8" />
     <link
       rel="icon"
@@ -120,6 +126,18 @@
 
       h1 {
         margin: 0;
+        font-weight: 400;
+      }
+      h1 .what {
+        display: block;
+        margin-top: 16px;
+        font-family: var(--pixel);
+        font-size: clamp(1.05rem, 4.4vw, 1.6rem);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      h1 .big {
+        display: block;
         font-family: var(--display);
         font-weight: 400;
         font-size: clamp(2.6rem, 11.5vw, 6.6rem);
@@ -135,7 +153,7 @@
       }
 
       .lede {
-        margin: 18px 0 0;
+        margin: 12px 0 0;
         max-width: 30em;
         font-size: clamp(1rem, 3.6vw, 1.25rem);
       }
@@ -430,10 +448,33 @@
         border-radius: 14px;
       }
 
+      /* ---------- About ---------- */
+
+      .about {
+        margin-top: 48px;
+        max-width: 46em;
+      }
+      .about h2 {
+        margin: 0 0 10px;
+        font-family: var(--display);
+        font-weight: 400;
+        font-size: clamp(1.3rem, 5.4vw, 1.9rem);
+        line-height: 1.1;
+        color: var(--sun);
+      }
+      .about h3 {
+        margin: 20px 0 6px;
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .about p {
+        margin: 0;
+      }
+
       /* ---------- Footer ---------- */
 
       footer {
-        margin-top: 44px;
+        margin-top: 32px;
         padding-top: 22px;
         border-top: 3px solid var(--ink);
         font-size: 0.9rem;
@@ -591,7 +632,10 @@
     <div class="wrap">
       <header>
         <div class="top">
-          <h1>Bag &rsquo;em all</h1>
+          <h1>
+            <span class="big">Bag &rsquo;em all</span>
+            <span class="what">Blinkit Pokémon bags tracker</span>
+          </h1>
           <div class="tally" id="tally" role="status">
             <b id="count">0</b>
             <span id="countLabel">of 30 bagged</span>
@@ -635,6 +679,17 @@
         <ul class="sheet" id="sheet"></ul>
         <p class="empty" id="empty" hidden></p>
       </main>
+
+      <section class="about">
+        <h2>About the Blinkit Pokémon bags</h2>
+        <p>
+          Blinkit&rsquo;s Pokémon collab printed 30 different Pokémon on its
+          delivery bags. This free tracker is a checklist of the full set, so
+          you can see which bags you already have and which Pokémon you&rsquo;re
+          still missing. There&rsquo;s no login and nothing to install.
+        </p>
+        </p>
+      </section>
 
       <footer>
         <p class="visits" id="visits" hidden></p>
