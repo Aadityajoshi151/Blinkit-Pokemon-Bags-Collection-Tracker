@@ -19,3 +19,7 @@ A free checklist for the Blinkit Pokemon bags. See all 30 Pokémon printed on Bl
 ## Disclaimer
 
 Fan-made and unofficial. Not affiliated with or endorsed by Blinkit, Nintendo, Game Freak, Creatures or The Pokémon Company. Pokémon names and sprites belong to their owners.
+
+## AI disclaimer
+
+This project was built with the help of AI (Claude)
