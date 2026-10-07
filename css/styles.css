@@ -1,0 +1,579 @@
+:root {
+  --page: #2437c8;
+  --page-deep: #172689;
+  --ink: #0e1440;
+  --paper: #fff4d6;
+  --sun: #ffd12e;
+  --pop: #ff4f3a;
+
+  --display: "Bowlby One", "Arial Black", Impact, sans-serif;
+  --pixel: "Pixelify Sans", "Bowlby One", "Trebuchet MS", sans-serif;
+
+  --t-normal: #b9b78c;
+  --t-fire: #f2853a;
+  --t-water: #5f92f2;
+  --t-electric: #f8d435;
+  --t-grass: #74c653;
+  --t-ice: #8fdad6;
+  --t-fighting: #d2463f;
+  --t-psychic: #f9618f;
+  --t-rock: #bda845;
+  --t-ghost: #8068ae;
+  --t-dragon: #8257ff;
+  --t-fairy: #f09cc4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--paper);
+  font-family: var(--pixel);
+  font-size: 17px;
+  line-height: 1.45;
+  background-color: var(--page);
+  background-image: radial-gradient(
+    rgba(14, 20, 64, 0.2) 1.6px,
+    transparent 1.8px
+  );
+  background-size: 14px 14px;
+}
+
+.wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Top of the page ---------- */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 400;
+}
+h1 .what {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--pixel);
+  font-size: clamp(1.05rem, 4.4vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+h1 .big {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 11.5vw, 6.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: var(--sun);
+  text-shadow:
+    2px 2px 0 var(--ink),
+    -2px 2px 0 var(--ink),
+    2px -2px 0 var(--ink),
+    -2px -2px 0 var(--ink),
+    6px 7px 0 var(--ink);
+}
+
+.lede {
+  margin: 12px 0 0;
+  max-width: 30em;
+  font-size: clamp(1rem, 3.6vw, 1.25rem);
+}
+
+.tally {
+  flex: none;
+  width: clamp(104px, 27vw, 190px);
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: var(--ink);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 5px 6px 0 var(--ink);
+  transform: rotate(7deg);
+}
+.tally b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 10vw, 4.6rem);
+  line-height: 0.9;
+}
+.tally span {
+  font-size: clamp(0.8rem, 2.9vw, 1.1rem);
+  font-weight: 600;
+}
+.tally.is-full {
+  background: var(--sun);
+}
+
+/* One segment per Pokémon, lit in its type colour once bagged */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  gap: 3px;
+  margin-top: 26px;
+  padding: 5px;
+  background: var(--ink);
+  border-radius: 10px;
+}
+.strip i {
+  height: 18px;
+  border-radius: 3px;
+  background: rgba(255, 244, 214, 0.13);
+}
+.strip i.on {
+  background: var(--type);
+}
+
+/* ---------- Controls ---------- */
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.filters {
+  display: flex;
+  max-width: 100%;
+  padding: 4px;
+  gap: 4px;
+  background: var(--ink);
+  border-radius: 12px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.filters button {
+  padding: 8px clamp(7px, 2.6vw, 12px);
+  font-size: clamp(0.84rem, 3.9vw, 1rem);
+  font-weight: 600;
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.filters button[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.share {
+  padding: 10px 16px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--sun);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 3px 4px 0 var(--ink);
+}
+.share:active {
+  transform: translate(2px, 3px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* ---------- Banner for links that carry a collection ---------- */
+
+.incoming {
+  margin-top: 22px;
+  padding: 16px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 5px 6px 0 var(--ink);
+}
+.incoming p {
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+.incoming div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.incoming button {
+  padding: 8px 14px;
+  font-weight: 700;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  background: none;
+}
+.incoming button.primary {
+  background: var(--sun);
+}
+
+/* ---------- The sticker sheet ---------- */
+
+.sheet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  position: relative;
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 14px;
+  border: 3px dashed rgba(255, 244, 214, 0.38);
+  background: var(--page-deep);
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.art img {
+  position: relative;
+  width: min(96px, 100%);
+  height: auto;
+  image-rendering: pixelated;
+  filter: grayscale(1) brightness(1.5) opacity(0.34);
+}
+
+.dex {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+/* The checkbox you can see */
+.tick {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255, 244, 214, 0.55);
+  border-radius: 7px;
+}
+.tick svg {
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+}
+
+.name {
+  display: block;
+  padding: 5px 4px 7px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  color: rgba(255, 244, 214, 0.78);
+}
+
+.slot:has(input:focus-visible) {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+/* Bagged: the sticker is on the page */
+.slot.is-got {
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 4px 5px 0 var(--ink);
+  transform: rotate(var(--tilt));
+}
+.slot.is-got .art {
+  background: var(--type);
+  border-bottom: 3px solid var(--ink);
+}
+.slot.is-got .art::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: repeating-conic-gradient(
+    rgba(255, 255, 255, 0.34) 0 9deg,
+    transparent 9deg 18deg
+  );
+}
+.slot.is-got .art img {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(2px 3px 0 rgba(14, 20, 64, 0.45));
+}
+.slot.is-got .dex {
+  top: 5px;
+  left: 5px;
+  padding: 0 5px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  opacity: 1;
+}
+.slot.is-got .tick {
+  background: var(--sun);
+  border-color: var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+}
+.slot.is-got .tick svg {
+  opacity: 1;
+}
+.slot.is-got .name {
+  color: var(--ink);
+}
+
+@media (hover: hover) {
+  .slot:not(.is-got):hover {
+    border-color: var(--sun);
+  }
+  .slot:not(.is-got):hover .art img {
+    filter: grayscale(1) brightness(1.5) opacity(0.6);
+  }
+}
+
+.empty {
+  margin: 28px 0 0;
+  padding: 28px 16px;
+  text-align: center;
+  font-weight: 600;
+  border: 3px dashed rgba(255, 244, 214, 0.38);
+  border-radius: 14px;
+}
+
+/* ---------- About ---------- */
+
+.about {
+  margin-top: 48px;
+  max-width: 46em;
+}
+.about h2 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 5.4vw, 1.9rem);
+  line-height: 1.1;
+  color: var(--sun);
+}
+.about h3 {
+  margin: 20px 0 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.about p {
+  margin: 0;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 3px solid var(--ink);
+  font-size: 0.9rem;
+}
+footer p {
+  margin: 0 0 10px;
+  max-width: 46em;
+}
+.visits {
+  font-weight: 700;
+  color: var(--sun);
+}
+.fine {
+  opacity: 0.78;
+}
+.reset {
+  padding: 0;
+  background: none;
+  border: 0;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 20;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 4px 5px 0 var(--ink);
+  transform: translate(-50%, calc(100% + 40px));
+  visibility: hidden;
+  transition:
+    transform 0.22s ease,
+    visibility 0s 0.22s;
+}
+.toast.show {
+  transform: translate(-50%, 0);
+  visibility: visible;
+  transition: transform 0.22s ease;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.confetti i {
+  position: absolute;
+  top: -24px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slot.just-got {
+    animation: slap 0.34s cubic-bezier(0.2, 1.5, 0.4, 1);
+  }
+  .tally.bump {
+    animation: bump 0.3s ease-out;
+  }
+  .confetti i {
+    animation: fall linear forwards;
+  }
+}
+@keyframes slap {
+  0% {
+    transform: scale(1.22) rotate(calc(var(--tilt) * -3));
+  }
+  100% {
+    transform: scale(1) rotate(var(--tilt));
+  }
+}
+@keyframes bump {
+  40% {
+    transform: rotate(7deg) scale(1.12);
+  }
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+/* ---------- Very small phones ---------- */
+
+@media (max-width: 359px) {
+  .dex {
+    display: none;
+  }
+}
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 640px) {
+  .wrap {
+    padding: 44px 28px 64px;
+  }
+  .sheet {
+    grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+    gap: 18px 16px;
+  }
+  .strip {
+    gap: 4px;
+    padding: 6px;
+  }
+  .strip i {
+    height: 24px;
+  }
+  .name {
+    font-size: 1.05rem;
+    padding: 7px 6px 9px;
+  }
+  .dex {
+    font-size: 0.85rem;
+  }
+  .tick {
+    width: 28px;
+    height: 28px;
+    top: 8px;
+    right: 8px;
+  }
+  .tick svg {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .sheet {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px 22px;
+  }
+  .art img {
+    width: 192px;
+    max-width: 100%;
+  }
+  .name {
+    font-size: 1.3rem;
+  }
+}
